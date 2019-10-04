@@ -1,0 +1,183 @@
+{% extends 'squarefeet/base.html' %}
+{% load staticfiles %}
+
+{% block content %}
+<section class="probootstrap-section probootstrap-section-lighter">
+    <div class="padding-left-10p padding-right-10p">
+      <div class="row heading">
+        <h2 class="mt0 mb50 text-center">Dashboard</h2>
+      </div>
+
+        {% if user.is_superuser %}
+      <div class="row mb-4">
+          <div class="col-12 bg-secondary text-white my-2 admin-section-header">
+              <h3>USER STATISTICS</h3>
+          </div>
+            <div class="col-xl-3 col-md-6 mb-4 pl-0 border-left-purple">
+              <div class="card border-left-primary shadow h-100 py-2 no-border-radius">
+                <div class="card-body padding-top-0 padding-bottom-0">
+                  <div class="row no-gutters align-items-center">
+                    <div class="col mr-2">
+                      <div class="text-xs font-weight-bold font-purple text-uppercase mb-1">Users</div>
+                      <div class="h5 mb-0 font-weight-bold text-muted stat-number">100</div>
+                    </div>
+                    <div class="col-auto">
+                      <i class="fa fa-users fa-2x circle-icon-purple"></i>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          <div class="col-xl-3 col-md-6 mb-4 pl-0 border-left-green">
+              <div class="card border-left-primary shadow h-100 py-2 no-border-radius">
+                <div class="card-body padding-top-0 padding-bottom-0">
+                  <div class="row no-gutters align-items-center">
+                    <div class="col mr-2">
+                      <div class="text-xs font-weight-bold font-green text-uppercase mb-1">Sellers</div>
+                      <div class="h5 mb-0 font-weight-bold text-muted stat-number">65</div>
+                    </div>
+                    <div class="col-auto">
+                      <i class="fa fa-user fa-2x circle-icon-green"></i>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          <div class="col-xl-3 col-md-6 mb-4 pl-0 border-left-yellow">
+              <div class="card border-left-primary shadow h-100 py-2 no-border-radius">
+                <div class="card-body padding-top-0 padding-bottom-0">
+                  <div class="row no-gutters align-items-center">
+                    <div class="col mr-2">
+                      <div class="text-xs font-weight-bold font-yellow text-uppercase mb-1">Buyers</div>
+                      <div class="h5 mb-0 font-weight-bold text-muted stat-number">35</div>
+                    </div>
+                    <div class="col-auto">
+                      <i class="fa fa-user fa-2x circle-icon-yellow"></i>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          <div class="col-xl-3 col-md-6 mb-4 px-0 border-left-aqua">
+              <div class="card border-left-primary shadow h-100 py-2 no-border-radius">
+                <div class="card-body padding-top-0 padding-bottom-0">
+                  <div class="row no-gutters align-items-center">
+                    <div class="col mr-2">
+                      <div class="text-xs font-weight-bold font-aqua text-uppercase mb-1">Agents</div>
+                      <div class="h5 mb-0 font-weight-bold text-muted stat-number">10</div>
+                    </div>
+                    <div class="col-auto">
+                      <i class="fa fa-user fa-2x circle-icon-aqua"></i>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+      </div>
+        {% endif %}
+
+      <!------------------------------------------------------------------------------------------->
+
+       <div class="row">
+           <div class="col-12 bg-secondary text-white my-2 admin-section-header">
+              <h3>PROPERTY STATISTICS</h3>
+          </div>
+            <div class="col-xl-3 col-md-6 mb-4 pl-0 border-left-purple">
+              <div class="card border-left-primary shadow h-100 py-2 no-border-radius">
+                <div class="card-body padding-top-0 padding-bottom-0">
+                  <div class="row no-gutters align-items-center">
+                    <div class="col mr-2">
+                      <div class="text-xs font-weight-bold font-purple text-uppercase mb-1">Posted</div>
+                      <div class="h5 mb-0 font-weight-bold text-muted stat-number">87</div>
+                    </div>
+                    <div class="col-auto">
+                      <i class="fa fa-list fa-2x circle-icon-purple"></i>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          <div class="col-xl-3 col-md-6 mb-4 pl-0 border-left-green">
+              <div class="card border-left-primary shadow h-100 py-2 no-border-radius">
+                <div class="card-body padding-top-0 padding-bottom-0">
+                  <div class="row no-gutters align-items-center">
+                    <div class="col mr-2">
+                      <div class="text-xs font-weight-bold font-green text-uppercase mb-1">Sold</div>
+                      <div class="h5 mb-0 font-weight-bold text-muted stat-number">27</div>
+                    </div>
+                    <div class="col-auto">
+                      <i class="fa fa-money fa-2x circle-icon-green"></i>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          <div class="col-xl-3 col-md-6 mb-4 pl-0 border-left-yellow">
+              <div class="card border-left-primary shadow h-100 py-2 no-border-radius">
+                <div class="card-body padding-top-0 padding-bottom-0">
+                  <div class="row no-gutters align-items-center">
+                    <div class="col mr-2">
+                      <div class="text-xs font-weight-bold font-yellow text-uppercase mb-1">Active</div>
+                      <div class="h5 mb-0 font-weight-bold text-muted stat-number">77</div>
+                    </div>
+                    <div class="col-auto">
+                      <i class="fa fa-home fa-2x circle-icon-yellow"></i>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          <div class="col-xl-3 col-md-6 mb-4 px-0 border-left-aqua">
+              <div class="card border-left-primary shadow h-100 py-2 no-border-radius">
+                <div class="card-body padding-top-0 padding-bottom-0">
+                  <div class="row no-gutters align-items-center">
+                    <div class="col mr-2">
+                      <div class="text-xs font-weight-bold font-aqua text-uppercase mb-1">Inactive</div>
+                      <div class="h5 mb-0 font-weight-bold text-muted stat-number">10</div>
+                    </div>
+                    <div class="col-auto">
+                      <i class="fa fa-times fa-2x circle-icon-aqua"></i>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+      </div>
+      <hr>
+
+      <!------------------------------------------------------------------------------------------->
+
+        <div class="row">
+            <div class="col-md-9 text-center border border-secondary">
+                <h1>User Growth Graph</h1>
+            </div>
+            <div class="col-md-3">
+                <h3 class="bg-secondary text-white p-2 admin-section-header">TOP 5 AGENTS</h3>
+                <ul class="list-group">
+                  <li class="list-group-item no-border-radius">
+                      Dipesh Parab
+                      <span class="badge badge-success">1st</span>
+                  </li>
+                  <li class="list-group-item no-border-radius">
+                      Nilesh Indalkar
+                      <span class="badge badge-warning">2nd</span>
+                  </li>
+                  <li class="list-group-item no-border-radius">
+                      Lavu Palav
+                      <span class="badge badge-warning">3rd</span>
+                  </li>
+                  <li class="list-group-item no-border-radius">Ganesh Shirvadkar</li>
+                  <li class="list-group-item no-border-radius">Yashwant Parab</li>
+                </ul>
+            </div>
+        </div>
+
+    </div>
+</section>
+{% endblock %}

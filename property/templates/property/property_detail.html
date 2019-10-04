@@ -1,0 +1,224 @@
+{% extends 'squarefeet/base.html' %}
+{% load staticfiles %}
+{% load custom_filters %}
+
+{% block content %}
+
+<section class="probootstrap-section probootstrap-section-lighter">
+    <div class="container">
+      <div class="row heading">
+        <h2 class="mt0 mb50 text-center">Property Listing</h2>
+      </div>
+      <div class="row">
+        <div class="col-md-12">
+            <div class="probootstrap-card probootstrap-listing">
+                <div class="probootstrap-card-media">
+                    <div class="probootstrap-card-text">
+                        <div class="row mb-5 pb-3 border-bottom">
+                            <div class="col-md-8">
+                                <h2 class="probootstrap-card-heading">
+                                &#8377; {{property_detail.price | floatword_indian}} | {{property_detail.bedroom}} BHK, {{property_detail.area}} Sq-ft Flat
+                                </h2>
+                            </div>
+                            <div class="col-md-4 agent-contact">
+                                <span class="circle-border pr-1">
+                                    <i class="fa fa-user"></i>
+                                </span>
+                                <span class="ml-3"><small>Agent: </small>Nilesh Indalkar</span>
+                                <a href="#" class="ml-3">Contact Now</a>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <a data-toggle="modal" data-target="#property_gallery">
+                                            <img src="{% static 'img/slider/slider_1.jpg' %}" class="img img-responsive img-thumbnail">
+                                        </a>
+                                    </div>
+                                </div>
+                               <div class="row">
+                                   <div class="col-md-4 pt-2">
+                                        <img src="{% static 'img/slider/slider_1.jpg' %}" class="img img-responsive">
+                                   </div>
+                                   <div class="col-md-4 pt-2">
+                                        <img src="{% static 'img/slider/slider_2.jpg' %}" class="img img-responsive">
+                                   </div>
+                                   <div class="col-md-4 pt-2">
+                                        <img src="{% static 'img/slider/slider_1.jpg' %}" class="img img-responsive">
+                                   </div>
+
+                                   <div class="col-md-4 pt-2">
+                                        <img src="{% static 'img/slider/slider_1.jpg' %}" class="img img-responsive">
+                                   </div>
+                                   <div class="col-md-4 pt-2">
+                                        <img src="{% static 'img/slider/slider_2.jpg' %}" class="img img-responsive">
+                                   </div>
+                                   <div class="col-md-4 pt-2">
+                                        <img src="{% static 'img/slider/slider_1.jpg' %}" class="img img-responsive">
+                                   </div>
+                               </div>
+                            </div>
+                            <div class="col-md-8">
+                                <div class="row mb-3 pb-3 border-bottom-dashed">
+                                    <div class="col-md-3">
+                                        <small>Bedrooms</small>
+                                        <p>{{property_detail.bedroom}}</p>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <small>Bathrooms</small>
+                                        <p>{{property_detail.bathroom}}</p>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <small>Floor Number</small>
+                                        <p>{{property_detail.floor}}</p>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <small>Furnishing</small>
+                                        <p>{{property_detail.furnishing}}</p>
+                                    </div>
+                                </div>
+
+                                <div class="row mb-3 pb-3 border-bottom-dashed">
+                                    <div class="col-md-3">
+                                        <small>Society</small>
+                                        <p>{{property_detail.building_name}}</p>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <small>Wing</small>
+                                        <p>{{property_detail.wing}}</p>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <small>Flat Number</small>
+                                        <p>{{property_detail.flat_no}}</p>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <small>Build-up Area</small>
+                                        <p>{{property_detail.area}}</p>
+                                    </div>
+                                </div>
+
+                                <div class="row mb-3 pb-3 border-bottom-dashed">
+                                    <div class="col-md-3">
+                                        <small>Two Wheeler Parking</small>
+                                        <p>{{property_detail.two_wheeler}}</p>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <small>Four Wheeler Parking</small>
+                                        <p>{{property_detail.four_wheeler}}</p>
+                                    </div>
+                                    <div class="col-md-3 offset-md-3">
+                                        <h3>Status</h3>
+                                        <span class="property-status px-2">{{property_detail.status}}</span>
+                                    </div>
+                                </div>
+
+                                <div class="row mb-3">
+                                    <h3>Amenities</h3>
+                                </div>
+
+                                <div class="row mb-3 pb-3">
+                                    <div class="col-md-3 text-center mb-3">
+                                        <span class="amenities">
+                                            <img class="amenities-icon" src="{% static 'img/icons/dumbbell.png' %}">
+                                        </span>
+                                        <small>Gym</small>
+                                    </div>
+                                    <div class="col-md-3 text-center mb-3">
+                                        <span class="amenities">
+                                            <img class="amenities-icon" src="{% static 'img/icons/swimming.png' %}">
+                                        </span>
+                                        <small>Swimming Pool</small>
+                                    </div>
+                                    <div class="col-md-3 text-center mb-3">
+                                        <span class="amenities">
+                                            <img class="amenities-icon" src="{% static 'img/icons/playground.png' %}">
+                                        </span>
+                                        <small>Playground</small>
+                                    </div>
+                                    <div class="col-md-3 text-center mb-3">
+                                        <span class="amenities">
+                                            <img class="amenities-icon" src="{% static 'img/icons/power_backup.png' %}">
+                                        </span>
+                                        <small>Power Backup</small>
+                                    </div>
+
+                                    <div class="col-md-3 text-center mb-3">
+                                        <span class="amenities">
+                                            <img class="amenities-icon" src="{% static 'img/icons/club_house.png' %}">
+                                        </span>
+                                        <small>Club House</small>
+                                    </div>
+                                    <div class="col-md-3 text-center mb-3">
+                                        <span class="amenities">
+                                            <img class="amenities-icon" src="{% static 'img/icons/elevator.png' %}">
+                                        </span>
+                                        <small>Lift</small>
+                                    </div>
+                                     <div class="col-md-3 text-center mb-3">
+                                        <span class="amenities">
+                                            <img class="amenities-icon" src="{% static 'img/icons/cctv.png' %}">
+                                        </span>
+                                        <small>CCTV Surveillance</small>
+                                    </div>
+                                    <div class="col-md-3 text-center mb-3">
+                                        <span class="amenities">
+                                            <img class="amenities-icon" src="{% static 'img/icons/guard.png' %}">
+                                        </span>
+                                        <small>Security Guard</small>
+                                    </div>
+
+                                    <div class="col-md-3 text-center mb-3">
+                                        <span class="amenities">
+                                            <img class="amenities-icon" src="{% static 'img/icons/water.png' %}">
+                                        </span>
+                                        <small>24/7 Water Supply</small>
+                                    </div>
+                                    <div class="col-md-3 text-center mb-3">
+                                        <span class="amenities">
+                                            <img class="amenities-icon" src="{% static 'img/icons/parking.png' %}">
+                                        </span>
+                                        <small>Parking Space</small>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+      </div>
+    </div>
+</section>
+
+<!---------------- Gallery Modal --------------->
+<div class="modal fade" id="property_gallery">
+    <div class="modal-dialog modal-dialog-centered top-20">
+        <div class="modal-content">
+
+            <!-- Modal Header -->
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">
+                    <i class="fa fa-times-circle"></i>
+                </button>
+            </div>
+
+            <!-- Modal body -->
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-12">
+                        <img src="{% static 'img/slider/slider_1.jpg' %}" class="img img-responsive">
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+<!----------------------------------------------->
+
+
+{% endblock%}

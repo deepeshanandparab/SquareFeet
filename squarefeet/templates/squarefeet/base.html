@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load staticfiles %}
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>SquareFeet | {{title}}</title>
+    <link rel="shortcut icon" href="{% static 'img/logo/favicon.ico' %}" type="image/x-icon" />
+
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css/styles-merged.css' %}">
+
+    <link rel="stylesheet" href="css/style.min.css">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/custom.css' %}">
+    <link rel="stylesheet" href="{% static 'css/dashboard.css' %}">
+
+    <!-- Bootstrap 4 -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <!-- Font Awesome -->
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+
+  </head>
+  <body>
+
+  <!-- START: header -->
+
+  <div class="probootstrap-loader"></div>
+
+  <header role="banner" class="probootstrap-header">
+    <div class="container">
+        <a href="/" class="probootstrap-logo">
+          <img src="{% static '/img/logo/squarefeet_logo_updated.png' %}" height="50px">
+        </a>
+
+        <a href="#" class="probootstrap-burger-menu visible-xs" ><i>Menu</i></a>
+        <div class="mobile-menu-overlay"></div>
+
+        <nav role="navigation" class="probootstrap-nav hidden-xs">
+          <ul class="probootstrap-main-nav">
+            <li class="active"><a href="/">Home</a></li>
+            <li><a href="{% url 'property_list' %}">Properties</a></li>
+            <li><a href="{% url 'contact_page' %}">Contact</a></li>
+            <li>|</li>
+
+            {% if user.is_authenticated %}
+            <!-- Logged In User Menu -->
+            <li class="nav-item dropdown">
+              <a class="dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+                <span class="user-icon">{{request.user|make_list|first}}</span>
+              </a>
+              <div class="dropdown-menu">
+                <a class="dropdown-item" href="{% url 'admin_dashboard' %}">
+                  <span class="fa fa-dashboard px-3"></span>Dashboard</a>
+                <hr class="my-0">
+                <a class="dropdown-item" href="{% url 'profile' %}">
+                  <span class="fa fa-user px-3"></span>Profile</a>
+                <a class="dropdown-item" href="#">
+                  <span class="fa fa-envelope px-3"></span>Messages</a>
+                <a class="dropdown-item" href="#">
+                  <span class="fa fa-heart px-3"></span>Wishlist</a>
+                <hr class="my-0">
+                <a class="dropdown-item" href="{% url 'logout' %}">
+                  <span class="fa fa-sign-out px-3"></span>Logout</a>
+              </div>
+            </li>
+            {% else %}
+              <li><a href="{% url 'login' %}">Login</a></li>
+            {% endif %}
+
+
+          </ul>
+          <div class="extra-text visible-xs">
+            <a href="#" class="probootstrap-burger-menu"><i>Menu</i></a>
+            <h5>Address</h5>
+            <p>202, 2nd Floor, Dreams Mall, Bhandup(W)</p>
+            <h5>Connect</h5>
+            <ul class="social-buttons">
+              <li><a href="#"><i class="icon-twitter"></i></a></li>
+              <li><a href="#"><i class="icon-facebook2"></i></a></li>
+              <li><a href="#"><i class="icon-instagram2"></i></a></li>
+            </ul>
+          </div>
+        </nav>
+    </div>
+
+  </header>
+  <!-- END: header -->
+
+  <div>
+    {% block content %}{% endblock %}
+  </div>
+
+  <footer class="probootstrap-footer probootstrap-bg">
+    <div class="container">
+      <div class="row mb60">
+        <div class="col-md-4">
+          <div class="probootstrap-footer-widget">
+            <h4 class="heading">About SquareFeet</h4>
+            <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. </p>
+            <p><a href="#">Read more...</a></p>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="probootstrap-footer-widget probootstrap-link-wrap">
+            <h4 class="heading">Quick Links</h4>
+            <ul class="stack-link">
+              <li><a href="#">Property Listing</a></li>
+              <li><a href="#">Rent Properties</a></li>
+              <li><a href="#">Sell Properties</a></li>
+              <li><a href="#">Agents</a></li>
+              <li><a href="#">Contact</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="probootstrap-footer-widget probootstrap-link-wrap">
+            <h4 class="heading">Subscribe</h4>
+            <p>Get updates about latest properties via email.</p>
+            <form action="#">
+              <div class="form-field">
+                <input type="text" class="form-control" placeholder="Enter your email">
+                <button class="btn btn-subscribe">Send</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+      <div class="row copyright">
+        <div class="col-md-6">
+          <p>Copyright @<b class="blue-text">SquareFeet Real Estate Pvt. Ltd. </b> 2019-20</p>
+        </div>
+        <div class="col-md-6">
+          <div class="probootstrap-footer-widget right">
+            <ul class="probootstrap-footer-social">
+              <li><a href="#"><i class="icon-twitter"></i></a></li>
+              <li><a href="#"><i class="icon-facebook"></i></a></li>
+              <li><a href="#"><i class="icon-instagram2"></i></a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <div class="gototop js-top">
+    <a href="#" class="js-gotop"><i class="icon-chevron-thin-up"></i></a>
+  </div>
+
+
+  <script src="{% static 'js/scripts.min.js' %}"></script>
+  <script src="{% static 'js/main.min.js' %}"></script>
+  <script src="{% static 'js/custom.js' %}"></script>
+  <script src="{% static 'js/main.js' %}"></script>
+
+  </body>
+</html>

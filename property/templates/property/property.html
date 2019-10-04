@@ -1,0 +1,89 @@
+{% extends 'squarefeet/base.html' %}
+{% load staticfiles %}
+{% load mathfilters %}
+{% load custom_filters %}
+
+{% block content %}
+
+<section class="probootstrap-section probootstrap-section-lighter">
+    <div class="container">
+      <div class="row heading">
+        <h2 class="mt0 mb50 text-center">Property Listing</h2>
+      </div>
+      <div class="row">
+       <!---- Listing Start ---->
+       {% for property in property_list %}
+        <div class="col-md-4 col-sm-6">
+          <div class="probootstrap-card probootstrap-listing">
+            <div class="probootstrap-card-media">
+              <img src="{% static 'img/slider/slider_1.jpg' %}" class="img-responsive">
+              <a href="#" class="probootstrap-love"><i class="icon-heart"></i></a>
+            </div>
+            <div class="probootstrap-card-text">
+              <h2 class="probootstrap-card-heading">
+                  <a href="{% url 'property_detail' property.id %}">
+                      {{property.bedroom}} Bed Room Property for {{property.type}}
+                  </a>
+              </h2>
+              <div class="probootstrap-listing-location">
+                <i class="icon-location2"></i>
+                  <span>
+                      {{property.wing}}-{{property.flat_no}}, {{property.building_name}}, {{property.locality}}
+                  </span>
+              </div>
+
+               {% if property.type == 'Sale' %}
+                    <div class="probootstrap-listing-category for-sale"><span>for {{property.type}}</span></div>
+               {% else %}
+                    <div class="probootstrap-listing-category for-rent"><span>for {{property.type}}</span></div>
+               {% endif %}
+
+              <div class="probootstrap-listing-price">
+                  <strong>&#8377; {{property.price | floatword_indian}}</strong>
+                  {% if property.type == 'Rent' %}
+                    <sup>/month</sup>
+                  {% endif %}
+              </div>
+            </div>
+            <div class="probootstrap-card-extra">
+              <ul>
+                <li>
+                  Area
+                  <span>{{property.area}} sqft</span>
+                </li>
+                <li>
+                  Beds
+                  <span>{{property.bedroom}}</span>
+                </li>
+                <li>
+                  Baths
+                  <span>{{property.bathroom}}</span>
+                </li>
+                <li>
+                  Floor
+                  <span>{{property.floor}}
+                      {% if property.floor|mod:10 == 1 %}
+                      st
+                      {% elif property.floor|mod:10 == 2 %}
+                      nd
+                      {% elif property.floor|mod:10 == 3 %}
+                      rd
+                      {% elif property.floor|mod:10 == 0 %}
+                      th
+                      {% else %}
+                      th
+                      {% endif %}
+                  </span>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+        <!-- END listing -->
+
+      </div>
+    </div>
+  </section>
+
+{% endblock%}

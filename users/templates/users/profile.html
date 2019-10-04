@@ -1,0 +1,176 @@
+{% extends 'squarefeet/base.html' %}
+{% load staticfiles %}
+
+{% block content %}
+<section class="probootstrap-section probootstrap-section-lighter">
+    <div class="padding-left-10p padding-right-10p">
+      <div class="row heading">
+        <h2 class="mt0 mb50 text-center">Profile</h2>
+      </div>
+
+      <div class="row">
+        <div class="col-md-12">
+            <div class="registration-card registration-listing">
+                <div class="registration-card-media">
+                    <div class="registration-card-text">
+
+                        <div class="container emp-profile">
+                        <form method="post">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="row">
+
+                                        <div class="profile-img col-12">
+                                            {% if user.profile.image %}
+                                                <img class="border border-muted img img-thumbnail mx-auto d-block" src="{{ user.profile.image.url }}"/>
+                                            {% else %}
+                                                <img class="img img-responsive border border-muted mx-auto d-block" src="{% static 'img/logo/default.jpg' %}" alt=""/>
+                                            {% endif %}
+                                            <div class="file btn btn-lg btn-primary">
+                                                <input type="file" name="file"/>Change Photo
+                                            </div>
+                                        </div>
+
+                                        <div class="col-12 mt-3">
+                                            <div class="profile-work">
+                                                <p>SOCIAL MEDIA LINKS</p>
+                                                <a href="{{user.profile.facebook_link}}" class="no-text-decoration" target="_blank">
+                                                    <span class="fa fa-facebook-square"></span>
+                                                    <span class="ml-2">Facebook Profile</span>
+                                                </a><br/>
+                                                <a href="{{user.profile.instagram_link}}" class="no-text-decoration" target="_blank">
+                                                    <span class="fa fa-instagram"></span>
+                                                    <span class="ml-2">Instagram Profile</span>
+                                                </a><br/>
+                                                <a href="{{user.profile.twitter_link}}" class="no-text-decoration" target="_blank">
+                                                    <span class="fa fa-twitter-square"></span>
+                                                    <span class="ml-2">Twitter Profile</span>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-8" id="profileInformation">
+                                    <div class="row">
+                                        <div class="profile-head col-12">
+                                            <div class="row">
+                                                <div class="col-8">
+                                                    <h2>
+                                                        {{user.username}}
+                                                    </h2>
+                                                </div>
+                                                <div class="col-4">
+                                                    <a class="btn btn-primary profile-edit-btn float-right" onclick="showUpdateForm(1)">EDIT</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-12 mt-2">
+                                            <ul class="nav nav-tabs">
+                                                <li class="active"><a data-toggle="tab" href="#profile">Profile</a></li>
+                                                <li><a data-toggle="tab" href="#property">Properties</a></li>
+                                            </ul>
+                                        </div>
+
+                                        <div class="tab-content col-12">
+                                            <div id="profile" class="tab-pane fade in active p-2 border border-muted border-top-0">
+                                                <div class="row">
+                                                        <div class="col-md-5">
+                                                            <label>User Id</label>
+                                                        </div>
+                                                        <div class="col-md-7">
+                                                            <p>{{user.username}}</p>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-md-5">
+                                                            <label>Name</label>
+                                                        </div>
+                                                        <div class="col-md-7">
+                                                            <p>{{user.first_name}} {{user.last_name}}</p>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-md-5">
+                                                            <label>Email</label>
+                                                        </div>
+                                                        <div class="col-md-7">
+                                                            <p>{{user.email}}</p>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-md-5">
+                                                            <label>Phone</label>
+                                                        </div>
+                                                        <div class="col-md-7">
+                                                            <p>{{user.profile.contact_number}}</p>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-md-5">
+                                                            <label>User Type</label>
+                                                        </div>
+                                                        <div class="col-md-7">
+                                                            <p>{{user.profile.user_type}}</p>
+                                                        </div>
+                                                    </div>
+                                                    <hr>
+                                                    <div class="row">
+                                                        <div class="col-md-5">
+                                                            <label>Personal Bio</label>
+                                                        </div>
+                                                        <div class="col-md-7">
+                                                            <p>{{user.profile.user_bio}}</p>
+                                                        </div>
+                                                    </div>
+                                            </div>
+
+                                            <div id="property" class="tab-pane fade p-2 border border-muted border-top-0">
+                                                <h4 class="mb-3">List of posted properties</h4>
+                                                    <ul class="pl-0">
+                                                        {% for property in property_list %}
+                                                            <li class="list-group-item">
+                                                                <a href="{% url 'property_detail' property.id %}" class="no-text-decoration text-secondary">
+                                                                    <b>{{property.bedroom}} BHK</b> flat in {{ property.building_name}} for <b>{{property.type}}</b>, {{property.locality}}
+                                                                </a>
+                                                                {% if property.status == 'Available' %}
+                                                                    <span class="badge badge-success">Available</span>
+                                                                {% else %}
+                                                                    <span class="badge badge-success">Sold</span>
+                                                                {% endif %}
+                                                            </li>
+                                                        {% endfor %}
+                                                    </ul>
+                                            </div>
+                                          </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-8" id="updateForm">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="row">
+                                                <div class="profile-head col-8">
+                                                    <h3>Update Profile</h3>
+                                                </div>
+                                                <div class="col-4">
+                                                    <a class="btn btn-secondary profile-edit-btn float-right" onclick="showUpdateForm()">CANCEL</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div><hr>
+                                    <div class="row">
+
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+      </div>
+    </div>
+</section>
+{% endblock %}
