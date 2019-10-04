@@ -5,7 +5,7 @@
 SquareFeet is website for Real Estate company where users can upload latest featured properties to buy or sell.
 
 ----------------------------------------------------------------------------------------------------------------------------------------
-                                                                  ScreenShots:
+                                                          ScreenShots:
 ----------------------------------------------------------------------------------------------------------------------------------------
 
 ![SquareFeet1](https://github.com/deepeshanandparab/SquareFeet/blob/master/Squarefeet%20Scrrenshot%201.png?raw=true "SquareFeet1") 
